@@ -7,7 +7,9 @@ cp -f ~/bin/* ~/dotfiles/bin
 cp -f ~/.vimrc ~/dotfiles
 cp -f ~/.zshrc ~/dotfiles
 cp -f ~/.zprofile ~/dotfiles
-cp -f ~/.config/bspwm/* ~/dotfiles/.config/bspwm/
+cp -f ~/.config/bspwm/bspwmrc ~/dotfiles/.config/bspwm/bspwmrc
 cp -f ~/.config/sxhkd/sxhkdrc ~/dotfiles/.config/sxhkd/sxhkdrc
+cp -f ~/.xinitrc ~/dotfiles
+cp -f ~/.Xresources ~/dotfiles
 
 echo "Done"
