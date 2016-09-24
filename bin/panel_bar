@@ -28,6 +28,10 @@ while read -r line ; do
 			# btc output
 			btc="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG} ${line#?} %{B-}%{F-}"
 			;;
+		J*)
+			# Pacman updates
+			pac="%{F$COLOR_SYS_FG}%{B$COLOR_SYS_BG} ${line#?} %{B-}%{F-}"
+			;;
 		W*)
 			# bspwm's state
 			wm=""
@@ -104,5 +108,5 @@ while read -r line ; do
 left=$(echo "${wm}" | grep -oiP "^(%\{\w#[\w\d]{6}\}.{51}){5}")
 right=$(echo "${wm}" | grep -oiP "(%\{\w#[\w\d]{6}\}.{51}){5}$")
 
-	printf "%s\n" "%{l}${clock} ${volume} ${temperature} ${btc}%{c}${left}%{r}%{S+}%{c}${right}"
+	printf "%s\n" "%{l}${clock} ${volume} ${temperature} ${btc}%{c}${left}%{r}${pac}%{S+}%{c}${right}"
 done

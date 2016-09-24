@@ -3,7 +3,7 @@ URxvt.intensityStyles: false
 URxvt.scrollBar: false
 
 ! font
-URxvt*font: xft:Source\ Code\ Pro\ Medium:size=10:antialias=true:hinting=true,xft:Liberation Mono:antialias=true:hinting=true
+URxvt*font: xft:Source Code Pro Medium:size=10:antialias=true:hinting=true
 
 ! terminal padding
 URxvt.internalBorder: 25
@@ -19,7 +19,7 @@ URxvt.internalBorder: 25
 ! Xft.hinting: 1
 ! Xft.antialias: 0
 ! Xft.rgba: rgb
-! Xft.dpi: 92
+Xft.dpi: 92
 
 ! clickable links, clipboard support, mouse wheel support, and on the fly font resizing
 ! you will need to install the relevent perl extensions for these to work
