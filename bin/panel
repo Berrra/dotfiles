@@ -29,7 +29,7 @@ done > "$PANEL_FIFO" &
 
 # Temp
 while true; do
-	cpu=$(sensors | grep -oP "Physical.*?high" | grep -oP "\d{2}\.\d.C")
+	cpu=$(sensors | grep -oP "Package.*?high" | grep -oP "\d{2}\.\d.C")
 	gpu=$(nvidia-settings -q gpucoretemp | grep -oP "\(jDesk:0\.0\): \d{2}" | grep -oP "\d{2}")
 	echo -e "Y\uf21e $cpu | $gpu.0°C"
 	sleep 5
