@@ -22,10 +22,11 @@ bspc config urgent_border_color '#cc241d'
 
 # rules
 bspc rule -a "URxvt" state=floating
-bspc rule -a Steam desktop=^9 state=floating
+bspc rule -a Steam desktop=^5
 bspc rule -a "Heroes of Newerth" desktop=^7 state=fullscreen
 bspc rule -a Thunderbird desktop=^8 state=floating
 bspc rule -a Hexchat desktop=^4
+bspc rule -a Gimp state=floating
 
 # start the panel
 panel &
