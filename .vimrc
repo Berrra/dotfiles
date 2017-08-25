@@ -3,9 +3,8 @@ set title
 set autoindent
 set cindent
 set smartindent
-set shiftwidth=4
-set tabstop=4
 set smarttab
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 set pastetoggle=<F2>
 
