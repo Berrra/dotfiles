@@ -3,14 +3,10 @@ URxvt.intensityStyles: false
 URxvt.scrollBar: false
 
 ! font
-URxvt*font: xft:Source Code Pro Medium:size=10:antialias=true:hinting=true
-
+URxvt*font: xft:Source Code Pro Medium:size=9:antialias=true:hinting=true
+URxvt.letterspace: 1
 ! terminal padding
 URxvt.internalBorder: 25
-
-! uncomment for transparent terminal if you are ready to be made fun of in #rice
-! URxvt.transparent:	true
-! URxvt.shading:		15
 
 ! make otf / ttf fonts look pretty.  does not matter if you are using a bitmap font.
 ! Xft.autohint: 0
@@ -29,14 +25,14 @@ URxvt.matcher.button: 1
 URxvt.matcher.rend.0: Uline Bold fg5
 
 ! colors
-*.cursorColor:  #ebdbb2
+*.cursorColor:  #464B50
 ! hard contrast: *background: #1d2021
-*.background: #282828
+*.background: #EBEBE9
 ! soft contrast: *background: #32302f
-*.foreground: #ebdbb2
+*.foreground: #464B50
 ! Black + DarkGrey
-*.color0:  #282828
-*.color8:  #928374
+*.color0:  #EBEBE9
+*.color8:  #464B50
 ! DarkRed + Red
 *.color1:  #cc241d
 *.color9:  #fb4934

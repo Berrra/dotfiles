@@ -17,10 +17,13 @@
 ;==========================================================
 
 [colors]
-background = #EBEBE9
+background = #00EBEBE9
 foreground = #464B50
 underline = #464B50
-alert = #bd2c40
+
+urgent = #B22222
+occupied = #464B50
+empty = #778899
 
 [bar/bar]
 monitor = DVI-D-0
@@ -29,34 +32,25 @@ offset-x = 25
 offset-y = 25
 background = ${colors.background}
 foreground = ${colors.foreground}
-line-size = 2
+line-size = 3
 spacing = 0
 padding-left = 0
 padding-right = 0
-module-margin-left = 0
+module-margin-left = 4
 module-margin-right = 0
 
-font-0 = Noto Sans:size=11;0
-font-1 = FontAwesome:size=11:0
+font-0 = Source Code Pro for Powerline:style=Bold:size=10
+font-1 = FontAwesome:size=15
 
-[bar/top-left]
-inherit = bar/bar
-width = 326
-modules-left = bspwm
-tray-position = left 
+wm-restack = bspwm
 
-[bar/top-center]
+[bar/bar1]
 inherit = bar/bar
-width = 20%;
-offset-x = 40%
-modules-center = xwindow
-
-[bar/top-right]
-inherit = bar/bar
-width = 120
-offset-x = 1775
-module-margin-left = 5
-modules-center = alsa date
+width = 1870 
+;tray-position = right
+modules-left = date alsa
+modules-center = bspwm
+modules-right = temperature cpu memory
 
 [module/bspwm]
 type = internal/bspwm
@@ -66,30 +60,33 @@ ws-icon-0 = I;
 ws-icon-1 = II;
 ws-icon-2 = III;
 ws-icon-3 = IV;
-ws-icon-4 = V;
+ws-icon-4 = V;
 ws-icon-5 = VI;
 ws-icon-6 = VII;
 ws-icon-default = x
 
 label-focused = %icon%
 label-focused-underline= ${colors.underline}
-label-focused-padding = 4
+label-focused-padding = 2
 
 label-occupied = %icon%
-label-occupied-padding = 4
+label-occupied-foreground = ${colors.occupied}
+label-occupied-padding = 2
 
 label-urgent = %icon%
-label-urgent-padding = 4
+label-urgent-foreground = ${colors.urgent}
+label-urgent-padding = 2
 
 label-empty = %icon%
-label-empty-foreground = ${bar/bar.foreground}
-label-empty-padding = 4
+label-empty-foreground = ${colors.empty}
+label-empty-padding = 2
 
 [module/alsa]
 type = internal/alsa
 
-format-volume = <ramp-volume> <label-volume>
-label-volume = %percentage%
+format-volume = <label-volume>
+;format-volume = <ramp-volume> <label-volume>
+label-volume = VOL: %percentage%
 label-volume-foreground = ${colors.foreground}
 
 ramp-volume-0 =  
@@ -126,8 +123,8 @@ format-disconnected =
 [module/cpu]
 type = internal/cpu
 interval = 0.5
-format = <label> <ramp-coreload>
-label = CPU
+format = <label>
+label = CPU %percentage%%
 
 ramp-coreload-0 = ▁
 ramp-coreload-0-font = 2
@@ -159,7 +156,7 @@ type = internal/memory
 format = <label> <bar-used>
 label = RAM
 
-bar-used-width = 30
+bar-used-width = 10
 bar-used-foreground-0 = #aaff77
 bar-used-foreground-1 = #aaff77
 bar-used-foreground-2 = #fba922
@@ -172,3 +169,27 @@ bar-used-fill-font = 6
 bar-used-empty = ─
 bar-used-empty-font = 6
 bar-used-empty-foreground = #444444
+
+[module/temperature]
+type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Thermal zone to use
+; To list all the zone types, run
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
+
+; Threshold temperature to display warning label (in degrees celsius)
+; Default: 80
+warn-temperature = 60
