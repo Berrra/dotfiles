@@ -2,7 +2,7 @@
 xrdb ~/.Xresources
 
 # Composing
-compton -b
+compton -bC
 
 # Swedish keyboard layout
 setxkbmap se &
@@ -13,9 +13,9 @@ sxhkd &
 # Bakgrund
 feh --bg-fill '/home/jomi/wallhaven.jpg'
 
-# Fontpath
-xset +fp /home/jomi/.local/share/fonts/foundation-icons/
-xset fp rehash
+# Fontpath för lokala fonts i Fontfonfig, behövs inte (än)
+#xset +fp /home/jomi/.local/share/fonts/
+#xset fp rehash
 
 # use VMname to fix Java windows
 wmname LG3D

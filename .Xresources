@@ -3,8 +3,8 @@ URxvt.intensityStyles: false
 URxvt.scrollBar: false
 
 ! font
-URxvt*font: xft:Source Code Pro Medium:size=9:antialias=true:hinting=true
-URxvt.letterspace: 1
+URxvt.font: xft:Source Code Pro for Powerline:size=9:antialias=true:hinting=true,xft:FontAwesome:size=14
+URxvt.letterSpace: true
 ! terminal padding
 URxvt.internalBorder: 25
 

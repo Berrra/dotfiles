@@ -20,8 +20,10 @@ bspc config focused_sticky_border_color '#d5c4a1'
 bspc config urgent_border_color '#cc241d'
 
 # rules
-bspc rule -a urxvt state=floating
+bspc rule -a URxvt state=floating
 bspc rule -a Steam desktop=^7
-bspc rule -a Thunderbird desktop=^4 state=floating
+bspc rule -a Thunderbird desktop=^4
+bspc rule -a KeePass2 desktop=^3
+bspc rule -a hon-x86_64 desktop=^7 state=fullscreen
 
-# Panel starts from .xinitc
+# Panel starts from .xinitrc
