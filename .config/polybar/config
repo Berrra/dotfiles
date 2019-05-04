@@ -26,7 +26,7 @@ occupied = #464B50
 empty = #778899
 
 [bar/bar]
-monitor = DVI-D-0
+monitor = eDP-1
 height = 4%
 offset-x = 25
 offset-y = 25
@@ -48,9 +48,9 @@ wm-restack = bspwm
 inherit = bar/bar
 width = 1870 
 ;tray-position = right
-modules-left = date alsa
+modules-left = date alsa network
 modules-center = bspwm
-modules-right = temperature cpu memory
+modules-right = temperature cpu memory battery
 
 [module/bspwm]
 type = internal/bspwm
@@ -106,19 +106,27 @@ interval = 1.0
 date =
 time = %H:%M
 
-date-alt = %d-%m-%Y%
+date-alt = %d %b%
 time-alt = 
 
 format = <label>
 label = %date% %time%
 
-[module/ether]
+[module/network]
 type = internal/network
-interface = enp4s0
+interface = wlp2s0
 interval = 3.0
-format-connected =  
+accumulate-stats = true
 
-format-disconnected =
+format-connected = <ramp-signal> <label-connected>
+label-connected = %essid% %downspeed:9%
+
+ramp-signal-0 = 0
+ramp-signal-1 = 20
+ramp-signal-2 = 40
+ramp-signal-3 = 60
+ramp-signal-4 = 80
+ramp-signal-5 = 100
 
 [module/cpu]
 type = internal/cpu
@@ -188,8 +196,17 @@ thermal-zone = 0
 ; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
 ; to find path to desired file
 ; Default reverts to thermal zone setting
-hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input
 
 ; Threshold temperature to display warning label (in degrees celsius)
 ; Default: 80
 warn-temperature = 60
+
+[module/battery]
+type = internal/battery
+full-at = 99
+
+battery = BAT0
+adapter = AC0
+
+poll-interval = 5
