@@ -156,6 +156,7 @@ type = internal/temperature
 
 format = <label>
 label =  %temperature-c%
+label-warn =  %temperature-c%
 
 ; Seconds to sleep between updates
 ; Default: 1
@@ -176,7 +177,7 @@ hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input
 
 ; Threshold temperature to display warning label (in degrees celsius)
 ; Default: 80
-warn-temperature = 60
+warn-temperature = 80
 
 [module/battery]
 type = internal/battery
@@ -202,4 +203,3 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-
